@@ -12,4 +12,4 @@ docker compose up -d
 
 5. Ir al siguiente link
 
-http://localhost
+http://127.0.0.1
