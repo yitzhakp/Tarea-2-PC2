@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINTAXIFY</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div class="header">
+         <img src="imagenes/logo_sintaxify.png" alt="SINTAXIFY Logo">
+    </div>
+    <hr class="hr-black">
+
+    <div class="header">
+        <h1>Análisis Sintáctico Descendente</h1>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="example-gic">
+                <h2>Ejemplo GIC</h2>
+                </div>
+                <div class="productions">
+                    <p>.</p>
+                    <p>E -> E+T</p>
+                    <p>E -> E-T</p>
+                    <p>E -> T</p>
+                    <p>T -> T*F</p>
+                    <p>T -> T/F</p>
+                    <p>T -> F</p>
+                    <p>F -> (E)</p>
+                    <p>F -> id</p>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="imagenes/Analisis_sintactico.png" alt="Análisis Sintáctico">
+        </div>
+    </div>
+    
+    <div class="input-section">
+        <h2 style="text-align: center;">Ingresar Producciones</h2>
+        <textarea id="productions" placeholder="Ejemplo: S -> aBS'"></textarea>
+        <br><br>
+        <button onclick="procesarGramatica()">Transformar Gramática</button>
+    </div>
+    <div class="output-section">
+        <h3>Producciones Transformadas más izquierda</h3>
+        <pre id="output-productions"></pre>
+        <h3>Primero (First)</h3>
+        <table id="output-first"></table>
+    </div>
+
+    <div class="follow-sets-section" style="display: none;">
+        <div>
+            <h3>Producciones en BNF:</h3>
+            <textarea id="producciones-follow" rows="10" cols="50"></textarea>
+            <br>
+            <button onclick="calcularFollowSets()">Calcular SIGUIENTES</button>
+        </div>
+        <h3>Siguientes (Follow)</h3>
+        <table id="resultados" class="follow-table">
+            <tr>
+                <th>No Terminal</th>
+                <th>Siguiente</th>
+            </tr>
+        </table>
+    </div>
+
+    <h1>Tabla M</h1>
+    <div class="output-section">
+        <h3>Método:</h3>
+        <ol>
+            <li>Para cada producción A-&gt;α de la GIC, dar los pasos 2 y 3.</li>
+            <li>Para cada terminal a de PRIMERO(α), añádase A-&gt;α a M[A,a].</li>
+            <li>Si ε está en PRIMERO(α), añádase A-&gt;α a M[A,b], donde b está en SIGUIENTE(A).</li>
+            <li>Todas las demás entradas de M son errores.</li>
+        </ol>
+        <div class="contenedores0">
+            <div style="display:inline-block; margin-right: 20px;">
+                <h4>Producciones</h4>
+                <pre id="output-productions-m"></pre>
+            </div>
+            <div style="display:inline-block; margin-right: 20px;">
+                <h4>Primero (First)</h4>
+                <pre id="output-first-m"></pre>
+            </div>
+            <div style="display:inline-block;">
+                <h4>Siguiente (Follow)</h4>
+                <div id="output-follow-m"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <div class="contenedor-tabla">
+            <label for="producciones">Producciones:</label><br>
+            <textarea id="producciones" rows="4" cols="50"></textarea>
+        </div>
+        <div class="contenedor-tabla">
+            <label for="first">Conjuntos First:</label><br>
+            <textarea id="first" rows="4" cols="50"></textarea>
+        </div>
+        <div class="contenedor-tabla">
+            <label for="follow">Conjuntos Follow:</label><br>
+            <textarea id="follow" rows="4" cols="50"></textarea>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <button onclick="generarTabla()">Generar Tabla</button>
+        <button onclick="alternarExplicacion()">Explicación</button>
+    </div>
+
+    <div id="tablaM-contenedor"></div>
+
+    <div id="popup-explicacion" class="popup-explicacion">
+        <span onclick="cerrarExplicacion()" class="cerrar" title="Cerrar Popup">&times;</span>
+        <p>Para crear una producción, sigue estos pasos:</p>
+        <ol>
+            <li>Identifica el no terminal de la producción.</li>
+            <li>Encuentra los símbolos terminales o no terminales que pueden derivar en el no terminal.</li>
+            <li>Utiliza los conjuntos de 'First' y 'Follow' para determinar la producción adecuada.</li>
+        </ol>
+    </div>
+
+    <script src="scripts.js"></script> <!-- Link to the JS file -->
+</body>
+</html>

@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  ApiTester:
+    image: server
+    build:
+      context: ./ApiTester
+      dockerfile: Dockerfile
+    container_name: app1
+    ports:
+      - "8000:8080"
+  
+  Sintaxify:
+    image: sintaxify
+    build:
+      context: ./Sintaxify
+      dockerfile: Dockerfile
+    container_name: app2
+    ports:
+      - "8001:80"
+
+  nginx:
+    image: reverse-proxy
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx-c
+    ports:
+      - "80:80"

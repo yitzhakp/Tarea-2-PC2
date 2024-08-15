@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.input-section {
+    text-align: center; 
+}
+#productions {
+    width: 70%; 
+    margin: 0 auto; 
+    height: 300px;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header img {
+    width: 300px; 
+    margin-right: 40px;
+}
+.hr-black {
+    border: 0;
+    height: 2px;
+    background-color: #000;
+    width: 100%; 
+}
+.header {
+    text-align: center; 
+}
+.header h1 {
+    font-size: 28px; 
+}
+.example-gic {
+    float: left; 
+    margin-right: 20px; 
+}
+.example-gic h2 {
+    margin-top: 0; 
+    font-size: 20px; 
+}
+.container {
+    display: flex; 
+    align-items: flex-start; 
+}
+.content {
+    width: 20%; 
+    margin-top: 60px;
+    margin-left: 220px;
+}
+.image-container {
+    width: 80%; 
+}
+.image-container img {
+    margin-top: 70px;
+    max-width: 100%; 
+    height: auto; 
+}
+.output-section {
+    margin-left: 30px; 
+}
+#output-productions {
+    font-size: 18px;
+}
+.follow-sets-section {
+    margin-left: 30px; 
+}
+.containerM {
+    display: flex; 
+}
+.content {
+    margin-right: 20px; 
+}
+.contenedores0 pre {
+    font-size: 1.2em; 
+}
+h1 {
+    text-align: center; 
+    margin-top: 40px;
+}
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; 
+}
+.contenedor-tabla {
+    margin: 0 10px;
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    opacity: 0; 
+    animation: aparecer 0.5s forwards; 
+}
+#tablaM-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; 
+}
+.popup-explicacion {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    z-index: 1;
+    display: none;
+}
+.popup-explicacion.mostrar {
+    display: block;
+}
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

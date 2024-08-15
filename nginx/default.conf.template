@@ -1,0 +1,30 @@
+server {
+    listen 80;
+    server_name nginx-c;
+    
+
+    location /c2/ {
+        rewrite ^/c2/(.*) /$1 break;
+
+        proxy_pass http://ApiTester:8080;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+    }
+
+    location /c3/ {
+        rewrite ^/c3/(.*) /$1 break;
+        root /usr/local/apache2/htdocs/;
+
+        proxy_pass http://Sintaxify:80;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+    }
+}
